@@ -13,16 +13,20 @@ const Account = sequelize.define(
         },
         first_name: {
             type: DataTypes.STRING,
+            allowNull: false,
         },
         last_name: {
             type: DataTypes.STRING,
+            allowNull: false,
         },
         account_number: {
             type: DataTypes.UUID,
+            allowNull: false,
             defaultValue: sequelize.literal('uuid_generate_v4()'),
         },
         balance: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             defaultValue: 0,
         },
         created_at: {

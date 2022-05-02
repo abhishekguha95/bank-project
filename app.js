@@ -5,22 +5,19 @@ const app = express(); // express instance created
 app.use(express.json());
 
 const sequelize = require('./database');
-// const eraseDatabaseOnSync = false;
-// sequelize.sync({force: eraseDatabaseOnSync}).then( //connecting to the DB
-//     async () => { console.log(('DB connected'))})
-//     .catch(async (err) => { console.log(('Failed to connect DB', err))});
 
 const dbAuthAndSync = async () => {
+    console.log('inside dbAuthAndSync');
     try {
         await sequelize.authenticate();
         console.log('Database connection has been established successfully.');
         sequelize
             .sync()
             .then((res) => {
-                console.log('db sync success ', res);
+                //console.log('db sync success ', res);
             })
             .catch((err) => {
-                console.log('db sync fail ', err);
+                //console.log('db sync fail ', err);
             });
     } catch (error) {
         console.error('Unable to connect to the database:', error);
